@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Convert Currency</title>
+    <style>
+      #app {
+        width: 80%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-image: linear-gradient(270deg, #ccdad1, #9caea9);
+      }
+      li {
+        list-style: none;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      台幣：<input type="number" v-model="money" />
+      <ul>
+        <li>美金: $ {{usd}}</li>
+        <li>日幣: $ {{jsp}}</li>
+        <li>英鎊: $ {{gbp}}</li>
+        <li>港幣: $ {{hkd}}</li>
+        <li>韓元: $ {{krd}}</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    var vue = new Vue({
+      el: "#app",
+      data: {
+        money: 1,
+      },
+      computed: {
+        usd: function () {
+          return (this.money / 28.91).toFixed(2);
+        },
+        jsp: function () {
+          return (this.money / 0.2771).toFixed(2);
+        },
+        gbp: function () {
+          return (this.money / 38.46).toFixed(2);
+        },
+        hkd: function () {
+          return (this.money / 20.76).toFixed(2);
+        },
+        krd: function () {
+          return (this.money / 0.02739).toFixed(2);
+        },
+      },
+    });
+  </script>
+</html>
